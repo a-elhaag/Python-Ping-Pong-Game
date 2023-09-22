@@ -1,5 +1,6 @@
 import turtle
 import random
+import math
 
 # Window
 window = turtle.Screen()
@@ -36,8 +37,22 @@ ball.speed(0)
 ball.shape('circle')
 ball.color('white')
 ball.penup()
-ball.dx= random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for horizontal movement
-ball.dy= random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for vertical movement
+
+# Function to calculate dy based on dx and launch angle
+def calculate_dy(dx, launch_angle):
+    launch_angle_rad = math.radians(launch_angle)
+    dy = dx * math.tan(launch_angle_rad)
+    speed_factor = 0.2  # Adjust as needed
+    return dy * speed_factor
+
+# Set a random launch angle (in degrees)
+launch_angle = random.uniform(-80, 80)   # You can adjust the angle range as needed
+
+# Set initial dx and calculate dy based on dx and launch angle
+ball.dx = random.uniform(0.1, 0.2)  # Random x-axis speed (adjust as needed)
+ball.dy = calculate_dy(ball.dx, launch_angle)
+
+ball.goto(0, 0)
 
 # Panel
 panel = turtle.Turtle()
@@ -100,9 +115,10 @@ while True:
         panel.clear()
         panel.write('Anas: {} - {} :UNKNOWN'.format(anas_score, unknown_score), align='center', font=('Courier', 24, 'normal'))
         
-        #Ball Coordinates
-        ball.dx = random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for horizontal movement
-        ball.dy = random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for vertical movement
+        # Set a new random launch angle and initial dx
+        launch_angle = random.uniform(-80, 80)   # You can adjust the angle range as needed
+        ball.dx = random.uniform(0.1, 0.2)  # Random x-axis speed (adjust as needed)
+        ball.dy = calculate_dy(ball.dx, launch_angle)
 
         ball.goto(0, 0)
         ball.dx *= -1
@@ -110,9 +126,11 @@ while True:
         unknown_score += 1
         panel.clear()
         panel.write('Anas: {} - {} :UNKNOWN'.format(anas_score, unknown_score), align='center', font=('Courier', 24, 'normal'))
-        #Ball Coordinates
-        ball.dx = random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for horizontal movement
-        ball.dy = random.uniform(-0.15, 0.15)  # Randomly select a number from the range -0.15 to 0.15 for vertical movement
+        
+        # Set a new random launch angle and initial dx
+        launch_angle = random.uniform(-80, 80)   # You can adjust the angle range as needed
+        ball.dx = random.uniform(0.1, 0.2)  # Random x-axis speed (adjust as needed)
+        ball.dy = calculate_dy(ball.dx, launch_angle)
 
         ball.goto(0, 0)
         ball.dx *= -1
