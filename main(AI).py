@@ -6,7 +6,7 @@ import math
 window = turtle.Screen()
 window.title('Ping Pong')
 window.bgcolor('black')
-window.setup(width=800, height=600)
+window.setup(width=900, height=700)
 window.tracer(0)
 
 # Score
@@ -50,11 +50,11 @@ def calculate_dy(dx, launch_angle):
 # Panel
 panel = turtle.Turtle()
 panel.speed(0)
-panel.color('white')
+panel.color('green')
 panel.penup()
 panel.hideturtle()
 panel.goto(0, 260)
-panel.write('AI: 0 - 0 :Player', align='center', font=('Courier', 24, 'normal'))
+panel.write('AI: 0 - 0 :Player', align='center', font=('Courier', 26, 'normal'))
 
 # Paddle Movement
 def player_paddle_up():
@@ -119,7 +119,7 @@ while True:
         ball.setx(330)
         ball.dx *= -1
     elif (-340 < ball.xcor() < -330) and (ai_paddle.ycor() + 50 > ball.ycor() > ai_paddle.ycor() - 50):
-        ball.color('green')
+        ball.color('white')
         ball.setx(-330)
         ball.dx *= -1
 
